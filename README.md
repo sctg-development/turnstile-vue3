@@ -1,6 +1,6 @@
-[![npm version](https://badge.fury.io/js/%40sctg%2Fturnstile-vue3)](https://badge.fury.io/js/%40sctg%2Fturnstile-vue3)
+[![npm version](https://badge.fury.io/js/@sctg%2Fturnstile-vue3.svg)](https://badge.fury.io/js/@sctg%2Fturnstile-vue3)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-[![build](https://github.com/sctg-development/sctgdesk-server/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/sctg-development/sctgdesk-server/actions/workflows/publish-npm.yml)
+[![build](https://github.com/sctg-development/turnstile-vue3/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/sctg-development/turnstile-vue3/actions/workflows/publish-npm.yml)
 
 
 # Turnstile Vue3 Component
