@@ -121,27 +121,27 @@ The `Turnstile` component has the following props:
 * `resetInterval`: The interval (in milliseconds) before the Turnstile is reset. Default is 295000 (5 minutes).
 * `size`: The size of the Turnstile widget. Can be one of the following:
 
-* `normal`: The default size.
-* `flexible`: A flexible size that adapts to the container.
-* `compact`: A compact size that is smaller than the default size.
+  * `normal`: The default size.
+  * `flexible`: A flexible size that adapts to the container.
+  * `compact`: A compact size that is smaller than the default size.
 
 * `theme`: The theme of the Turnstile widget. Can be one of the following:
 
-* `light`: A light theme.
-* `dark`: A dark theme.
-* `auto`: Automatically detects the theme based on the surrounding environment.
+  * `light`: A light theme.
+  * `dark`: A dark theme.
+  * `auto`: Automatically detects the theme based on the surrounding environment.
 
 * `language`: The language of the Turnstile widget. Can be one of the following:
 
-* `auto`: Automatically detects the language based on the surrounding environment.
-* A valid language code (e.g., `en`, `fr`, `es`, etc.).
+  * `auto`: Automatically detects the language based on the surrounding environment.
+  * A valid language code (e.g., `en`, `fr`, `es`, etc.).
 
 * `action`: The action that the Turnstile widget is verifying. Can be any string.
 * `appearance`: The appearance of the Turnstile widget. Can be one of the following:
 
-* `always`: Always shows the Turnstile widget.
-* `execute`: Shows the Turnstile widget only when the user interacts with the element.
-* `interaction-only`: Shows the Turnstile widget only when the user interacts with the element, and hides it when the interaction is completed.
+  * `always`: Always shows the Turnstile widget.
+  * `execute`: Shows the Turnstile widget only when the user interacts with the element.
+  * `interaction-only`: Shows the Turnstile widget only when the user interacts with the element, and hides it when the interaction is completed.
 
 * `renderOnMount`: Whether to render the Turnstile widget when the component is mounted. Default is `true`.
 * `v-model`: A two-way binding for the Turnstile token.
