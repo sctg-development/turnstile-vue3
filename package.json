@@ -1,0 +1,29 @@
+{
+  "name": "@sctg/turnstile-vue3",
+  "version": "1.0.0",
+  "description": "Simple Vue3 component for integrating a Turnstile captcha",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "rollup": "rollup -c",
+    "build": "npm run rollup",
+    "prepublish": "npm run build",
+    "test": "echo \"Error: no test specified yet\" && exit 0"
+  },
+  "author": "Ronan Le Meillat",
+  "license": "AGPL-3.0-or-later",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@types/cloudflare-turnstile": "^0.2.2",
+    "rollup": "^4.24.3",
+    "rollup-plugin-typescript2": "^0.36.0",
+    "rollup-plugin-vue": "^6.0.0",
+    "tslib": "^2.8.0",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "strict": false,
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "forceConsistentCasingInFileNames": true,
+        "importHelpers": true,
+        "isolatedModules": false,
+        "noEmit": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "declaration": true,
+        "declarationDir": "dist",
+        "sourceMap": true,
+        "jsx": "preserve",
+        "baseUrl": ".",
+        "types": [
+            "vue",
+            "cloudflare-turnstile"
+        ]
+    },
+    "include": [
+        "./**/*.ts",
+        "./**/*.vue"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
