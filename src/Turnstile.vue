@@ -172,15 +172,23 @@ function render() {
 
 // Start the reset timeout.
 function startResetTimeout() {
+    // Validate and sanitizep rops.resetInterval
+    const resetInterval = Math.max(0, Math.min(props.resetInterval, 300 * 1000));
     // Clear any existing timeout.
     resetTimeout.value = setTimeout(() => {
         // Reset the Turnstile widget.
         reset();
-    }, props.resetInterval);
+    }, resetInterval);
 }
 
 // When the component is mounted...
 onMounted(async () => {
+    // Validate and sanitize props (e.g., siteKey)
+    const validSiteKeyRegex = /^[a-zA-Z0-9_]{10,}$/;
+    if (!validSiteKeyRegex.test(props.siteKey)) {
+        throw new Error('Invalid site key');
+    }
+
     // Create a promise that resolves when the Turnstile script is loaded.
     const turnstileLoadPromise = new Promise<void>((resolve, reject) => {
         turnstileLoad = { resolve, reject };
