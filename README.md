@@ -2,12 +2,16 @@
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![build](https://github.com/sctg-development/turnstile-vue3/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/sctg-development/turnstile-vue3/actions/workflows/publish-npm.yml)
 
-
 # Turnstile Vue3 Component
 
 A Vue3 component for integrating Cloudflare Turnstile into your application.
 
-Installation
+## Star the project
+
+**If you appreciate my work, please consider giving it a star! 🤩 or a** [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/sctg-development)
+
+## Installation
+
 To install the Turnstile Vue3 component, run the following command:
 
 ```bash
