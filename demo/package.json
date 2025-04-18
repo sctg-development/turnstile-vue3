@@ -1,0 +1,22 @@
+{
+    "name": "turnstile-demo",
+    "version": "0.0.1",
+    "type": "module",
+    "scripts": {
+        "dev": "NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
+        "dev:env": "cp .env .dev.vars && set -a && source ./.env && set +a && NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
+        "build": "vite build",
+        "serve": "vite preview"
+    },
+    "dependencies": {
+        "@sctg/turnstile-vue3": "file:../",
+        "vue": "^3.5.13"
+    },
+    "devDependencies": {
+        "@types/node": "^22.14.1",
+        "@vitejs/plugin-vue": "^5.2.3",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.2",
+        "wrangler": "^4.12.0"
+    }
+}

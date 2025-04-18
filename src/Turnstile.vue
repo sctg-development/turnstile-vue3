@@ -3,6 +3,23 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * @component Turnstile
+ * @description A Vue3 component that integrates Cloudflare's Turnstile CAPTCHA service.
+ * This component handles the loading of the Turnstile script, rendering the widget, and
+ * managing the widget's lifecycle events. It supports customization options like theme,
+ * size, language, and more.
+ * 
+ * @example
+ * <template>
+ *   <Turnstile 
+ *     site-key="your-site-key" 
+ *     @complete="handleComplete" 
+ *     theme="dark" 
+ *     size="compact"
+ *   />
+ * </template>
+ */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 
 // The URL of the Turnstile API script.
@@ -22,33 +39,80 @@ declare global {
 // The initial state of the Turnstile: 'unloaded' (not loaded), 'loading' (being loaded), or 'ready' (loaded).
 let turnstileState = typeof window !== 'undefined' ? (window.turnstile !== undefined ? 'ready' : 'unloaded') : 'unloaded';
 
-// The promise that resolves when the Turnstile script is loaded.
+/**
+ * The promise that resolves when the Turnstile script is loaded.
+ * @type {Object}
+ * @property {Function} resolve - Function to resolve the promise
+ * @property {Function} reject - Function to reject the promise
+ */
 let turnstileLoad: {
     resolve: () => void;
     reject: (value?: string) => void;
 };
 
-// Interface for the properties of the Turnstile component.
+/**
+ * Interface for the properties of the Turnstile component.
+ * @interface TurnstileProps
+ */
 interface TurnstileProps {
-    // The site key for the Turnstile.
+    /**
+     * The site key for the Turnstile widget.
+     * Obtained from the Cloudflare dashboard.
+     * @required
+     */
     siteKey: string;
-    // The model value (initial value) for the Turnstile.
+    
+    /**
+     * The model value (initial value) for the Turnstile token.
+     * @required
+     */
     modelValue: string;
-    // The interval (in ms) before the Turnstile is reset.
+    
+    /**
+     * The interval (in ms) before the Turnstile widget is reset.
+     * @default 295000 (just under 5 minutes)
+     */
     resetInterval?: number;
-    // The size of the Turnstile widget.
+    
+    /**
+     * The size of the Turnstile widget.
+     * @default 'normal'
+     */
     size?: 'normal' | 'flexible' | 'compact';
-    // The theme of the Turnstile widget.
+    
+    /**
+     * The theme of the Turnstile widget.
+     * @default 'auto'
+     */
     theme?: 'light' | 'dark' | 'auto';
-    // The language of the Turnstile widget.
+    
+    /**
+     * The language of the Turnstile widget.
+     * Use a valid language code or 'auto' to detect automatically.
+     * @default 'auto'
+     */
     language?: string;
-    // The action that the Turnstile is verifying.
+    
+    /**
+     * The action that the Turnstile widget is verifying.
+     * Can be used to identify different forms.
+     * @default ''
+     */
     action?: string;
-    // The appearance of the Turnstile widget.
+    
+    /**
+     * The appearance of the Turnstile widget.
+     * @default 'always'
+     */
     appearance?: 'always' | 'execute' | 'interaction-only';
-    // Whether to render the Turnstile widget when the component is mounted.
+    
+    /**
+     * Whether to render the Turnstile widget when the component is mounted.
+     * @default true
+     */
     renderOnMount?: boolean;
 }
+
 // Properties that can be passed to this component.
 const props = withDefaults(defineProps<TurnstileProps>(), {
     resetInterval: 295 * 1000,
@@ -60,21 +124,37 @@ const props = withDefaults(defineProps<TurnstileProps>(), {
     renderOnMount: true,
 });
 
-// Custom events that this component can emit.
+/**
+ * Custom events emitted by this component.
+ */
 const emit = defineEmits<{
-    // Update the model value.
+    /**
+     * Update the model value with the new Turnstile token.
+     */
     (e: 'update:modelValue', value: string): void;
-    // The Turnstile widget has completed.
+    /**
+     * The Turnstile widget has completed.
+     */
     (e: 'complete'): void;
-    // An error occurred.
+    /**
+     * An error occurred.
+     */
     (e: 'error', code: string): void;
-    // The Turnstile widget is not supported.
+    /**
+     * The Turnstile widget is not supported.
+     */
     (e: 'unsupported'): void;
-    // The Turnstile widget has expired.
+    /**
+     * The Turnstile widget has expired.
+     */
     (e: 'expired'): void;
-    // The Turnstile widget is about to become interactive.
+    /**
+     * The Turnstile widget is about to become interactive.
+     */
     (e: 'before-interactive'): void;
-    // The Turnstile widget has become interactive.
+    /**
+     * The Turnstile widget has become interactive.
+     */
     (e: 'after-interactive'): void;
 }>();
 
