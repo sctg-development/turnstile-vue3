@@ -25,7 +25,7 @@ jobs:
     - name: Build
       run: |
         cd demo
-        npm install
+        npm ci
         npm run build
 
     - name: Publish to Cloudflare Pages

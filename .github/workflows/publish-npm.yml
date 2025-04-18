@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: rm -rf demo
       - run: npm ci
       - run: npm run build
       - run: npm test
