@@ -1,0 +1,38 @@
+name: Publish Sonic Nozzle demo to Cloudflare Pages
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'demo/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22]
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Build
+      run: |
+        cd demo
+        npm install
+        npm run build
+
+    - name: Publish to Cloudflare Pages
+      uses: sctg-development/pages-action-without-url@main
+      with:
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+            projectName: turnstile-demo
+            directory: demo/dist
+            gitHubToken: ${{ secrets.GITHUB_TOKEN }}

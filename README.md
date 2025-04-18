@@ -20,6 +20,7 @@ A Vue3 component for integrating Cloudflare Turnstile into your application.
 - 🧩 Vue 3 Composition API compatible
 
 ## Table of Contents
+
 - [Turnstile Vue3 Component](#turnstile-vue3-component)
   - [Star the project](#star-the-project)
   - [Features](#features)
