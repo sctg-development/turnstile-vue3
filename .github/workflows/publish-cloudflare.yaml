@@ -27,6 +27,8 @@ jobs:
         cd demo
         echo "CLOUDFLARE_TURNSTILE_SITE_KEY=${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}" >> .env
         echo "CLOUDFLARE_TURNSTILE_SECRET_KEY=${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}" >> .env
+        export CLOUDFLARE_TURNSTILE_SITE_KEY=${{ secrets.CLOUDFLARE_TURNSTILE_SITE_KEY }}
+        export CLOUDFLARE_TURNSTILE_SECRET_KEY=${{ secrets.CLOUDFLARE_TURNSTILE_SECRET_KEY }}
         npm ci
         cd ..
         npm ci
@@ -34,6 +36,7 @@ jobs:
         cd demo
         npm ci
         source .env
+        cat .env
         npm run build
 
     - name: Publish to Cloudflare Pages
