@@ -1,4 +1,4 @@
-name: Publish Sonic Nozzle demo to Cloudflare Pages
+name: Publish Turnstile demo to Cloudflare Pages
 
 on:
   workflow_dispatch:
