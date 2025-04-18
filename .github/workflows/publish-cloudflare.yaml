@@ -24,6 +24,9 @@ jobs:
 
     - name: Build
       run: |
+        cd demo
+        npm ci
+        cd ..
         npm ci
         npm run build
         cd demo
