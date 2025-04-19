@@ -1,5 +1,5 @@
 import { verifyCaptcha } from '@sctg/turnstile-vue3';
-import { PagesFunction, Response } from '@cloudflare/workers-types';
+import { PagesFunction} from '@cloudflare/workers-types';
 
 interface Env {
   CLOUDFLARE_TURNSTILE_SECRET_KEY: string;
@@ -13,7 +13,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) =>{
 
   const data = await verifyCaptcha(turnstileSecret, token, cloudflareIp)
   if (data.success) {
-    return new Response(
+    return new (Response as any)(
       JSON.stringify({ message: 'Captcha verified successfully' }),
       {
         status: 200,
@@ -23,7 +23,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) =>{
       },
     );
   } else {
-    return new Response(JSON.stringify({ message: 'Invalid captcha' }), {
+    return new (Response)(JSON.stringify({ message: 'Invalid captcha' }), {
       status: 400,
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) =>{
 }
 
 export const onRequestGet: PagesFunction<Env> = async ({ request, env })=>{
-  return new Response(
+  return new (Response as any)(
     JSON.stringify({ message: 'GET request not allowed' }),
     {
       status: 405,
@@ -43,6 +43,7 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env })=>{
     },
   );
 }
+
 export async function onRequestOptions() {
   return new Response(
     JSON.stringify({ message: 'OPTIONS request not allowed' }),
