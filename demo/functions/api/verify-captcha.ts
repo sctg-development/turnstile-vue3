@@ -1,14 +1,18 @@
 import { verifyCaptcha } from '@sctg/turnstile-vue3';
+import { PagesFunction, Response } from '@cloudflare/workers-types';
 
-export async function onRequestPost({ request, env }) {
-  const body = await request.json();
+interface Env {
+  CLOUDFLARE_TURNSTILE_SECRET_KEY: string;
+}
+export const onRequestPost: PagesFunction<Env> = async ({ request, env }) =>{
+  const body:{token: string} = await request.json();
 
   const token  = body.token;
   const turnstileSecret = env.CLOUDFLARE_TURNSTILE_SECRET_KEY;
+  const cloudflareIp = request.headers.get('CF-Connecting-IP') || "" ;
 
-  const data = await verifyCaptcha(turnstileSecret, token, request.ip)
+  const data = await verifyCaptcha(turnstileSecret, token, cloudflareIp)
   if (data.success) {
-    request.json({ message: 'Captcha verified successfully' });
     return new Response(
       JSON.stringify({ message: 'Captcha verified successfully' }),
       {
@@ -26,4 +30,31 @@ export async function onRequestPost({ request, env }) {
       },
     });
   }
+}
+
+export const onRequestGet: PagesFunction<Env> = async ({ request, env })=>{
+  return new Response(
+    JSON.stringify({ message: 'GET request not allowed' }),
+    {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+}
+export async function onRequestOptions() {
+  return new Response(
+    JSON.stringify({ message: 'OPTIONS request not allowed' }),
+    {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Max-Age': '86400',
+      },
+    },
+  );
 }
