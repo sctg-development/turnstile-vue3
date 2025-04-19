@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
         "dev:env": "cp .env .dev.vars && set -a && source ./.env && set +a && NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
-        "build": "vite build",
+        "build": "set -a && source ./.env && set +a && vite build",
         "serve": "vite preview"
     },
     "dependencies": {

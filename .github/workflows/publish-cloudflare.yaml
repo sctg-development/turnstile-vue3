@@ -48,4 +48,3 @@ jobs:
             directory: dist
             workingDirectory: demo
             gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-            wranglerVersion: '4'

@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 
+if (process.env.CLOUDFLARE_TURNSTILE_SITE_KEY === undefined) {
+  console.warn("CLOUDFLARE_TURNSTILE_SITE_KEY is not set. Using default value.");
+}
 export default defineConfig({
   define: {
     "import.meta.env.CLOUDFLARE_TURNSTILE_SITE_KEY": JSON.stringify(process.env.CLOUDFLARE_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"),
