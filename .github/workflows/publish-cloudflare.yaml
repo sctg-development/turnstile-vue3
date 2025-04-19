@@ -45,5 +45,7 @@ jobs:
             apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
             accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
             projectName: turnstile-demo
-            directory: demo/dist
+            directory: dist
+            workingDirectory: demo
             gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+            wranglerVersion: '4'
