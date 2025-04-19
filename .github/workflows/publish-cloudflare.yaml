@@ -40,7 +40,7 @@ jobs:
         npm run build
 
     - name: Publish to Cloudflare Pages
-      uses: sctg-development/pages-action-without-url@main
+      uses: sctg-development/pages-action-without-url@v2
       with:
             apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
             accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
