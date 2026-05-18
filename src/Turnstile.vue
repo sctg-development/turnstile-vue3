@@ -264,7 +264,7 @@ function startResetTimeout() {
 // When the component is mounted...
 onMounted(async () => {
     // Validate and sanitize props (e.g., siteKey)
-    const validSiteKeyRegex = /^[a-zA-Z0-9_]{10,}$/;
+    const validSiteKeyRegex = /^[a-zA-Z0-9_-]{10,}$/;
     if (!validSiteKeyRegex.test(props.siteKey)) {
         throw new Error('Invalid site key');
     }
