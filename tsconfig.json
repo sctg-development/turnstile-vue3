@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
+        "ignoreDeprecations": "6.0",
         "strict": false,
         "target": "esnext",
-        "module": "esnext",
-        "moduleResolution": "node",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
         "forceConsistentCasingInFileNames": true,
         "importHelpers": true,
         "isolatedModules": false,
