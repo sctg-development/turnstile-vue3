@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
         "dev:env": "cp .env .dev.vars && set -a && source ./.env && set +a && NODE_NO_WARNINGS=1 npx wrangler pages dev --log-level info --inspector-port 9229 --local-protocol http --proxy 5173 -- vite ",
-        "build": "set -a && source ./.env && set +a && vite build",
+        "build": "bash -c 'set -a && source ./.env && set +a && vite build'",
         "serve": "vite preview"
     },
     "dependencies": {
@@ -13,7 +13,7 @@
         "vue": "^3.5.34"
     },
     "devDependencies": {
-        "@cloudflare/workers-types": "^4.20250419.0",
+        "@cloudflare/workers-types": "^4.20260519.1",
         "@types/node": "^22.14.1",
         "@vitejs/plugin-vue": "^6.0.7",
         "typescript": "^6.0.3",
