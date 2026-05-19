@@ -36,4 +36,4 @@ jobs:
       - run: rm -rf demo
       - run: npm ci
       - run: npm run build
-      - run: npm publish
+      - run: npm publish --provenance --access public
